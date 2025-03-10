@@ -22,6 +22,16 @@ function Tasks (props) {
         props.setTasks(newTasks);
     }
 
+    function deleteTaskClick(taskID){
+        if (!props.tasks || !Array.isArray(props.tasks)) {
+            console.error("Tasks")
+        }
+        const newTasks = props.tasks.filter(task => task.id !== taskID);
+        console.log("Task Deleted");
+
+        props.setTasks(newTasks);
+    }   
+
     return (
         <div>
             <br />
@@ -40,7 +50,7 @@ function Tasks (props) {
                         <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md">
                             <ChevronRightIcon />
                         </button>
-                        <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md">
+                        <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md" onClick={() => deleteTaskClick(task.id)}>
                             <TrashIcon />
                         </button>
                     </li>

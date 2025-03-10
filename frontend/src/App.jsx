@@ -18,9 +18,9 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-[#F8F3D9] flex justify-center p-6">
-      <div className="w-[500px]">
+      <div className="w-[500px] space-y-4">
         <h1 className="text-3xl text-[#B9B28A] font-bold text-center">To Do App</h1>
-        <AddTask />
+        <AddTask tasks={tasks} setTasks={setTasks} />
         <Tasks tasks={tasks} setTasks={setTasks}/>
       </div>
     </div>
