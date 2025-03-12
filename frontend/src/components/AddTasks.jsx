@@ -12,7 +12,7 @@ function AddTask(props){
             description: description,
             isComplete: false,
         };
-
+        console.log(newTask.id);
         props.setTasks([...props.tasks, newTask]);
     }
 
