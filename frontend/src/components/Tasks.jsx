@@ -1,4 +1,4 @@
-import {ChevronRightIcon} from "lucide-react";
+import {CheckIcon, ChevronRightIcon} from "lucide-react";
 import { TrashIcon } from "lucide-react";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
@@ -56,9 +56,10 @@ function Tasks (props) {
                     <li key={task.id} className="flex gap-2">
                         <button  onClick= {() => onTaskClick(task.id)}
                             className={clsx(
-                                "text-left bg-[#B9B28A] text-[#504B38] p-2 rounded-md w-full",
+                                "text-left bg-[#B9B28A] text-[#504B38] p-2 rounded-md w-full flex gap-2",
                                 task.isCompleted && "line-through"
                             )} >
+                                {task.isCompleted && <CheckIcon />}
                                 {task.title}
                         </button>
                         <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md" onClick={() => onSeeDetailsClick(task)} >
