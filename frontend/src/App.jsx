@@ -1,20 +1,14 @@
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTasks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [tasks, setTasks] = useState([{
-    id: 1,
-    title: "Task 1",
-    description: "This is task 1",
-    isCompleted: false,
-  },
-  {
-    id : 2,
-    title: "Task 2",
-    description: "This is task 2",
-    isCompleted: false,
-  }]);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
+
+  useEffect(()=> {
+    console.log("task changed")
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div className="w-screen h-screen bg-[#F8F3D9] flex justify-center p-6">
