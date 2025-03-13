@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path='/taskpage' element={<TaskPage />}></Route>
+        <Route path='/task' element={<TaskPage />}></Route>
       </Routes>
     </Router>
   </StrictMode>,

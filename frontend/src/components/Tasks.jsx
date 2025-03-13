@@ -1,10 +1,14 @@
 import {ChevronRightIcon} from "lucide-react";
 import { TrashIcon } from "lucide-react";
 import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
+
 
 function Tasks (props) {
     console.log(props)
-
+    const navigate = useNavigate();
+    
+    
     function onTaskClick(taskId){
         if (!props.tasks || !Array.isArray(props.tasks)) {
             console.error("Erro: props.tasks não está definido ou não é um array.");
@@ -30,7 +34,17 @@ function Tasks (props) {
         console.log("Task Deleted");
 
         props.setTasks(newTasks);
-    }   
+    }  
+    
+    function onSeeDetailsClick(task){
+        
+        const query = new URLSearchParams();
+        query.set("title", task.title)
+        query.set("description", task.description)
+        navigate(`/task?title=${encodeURIComponent(task.title)}&description=${encodeURIComponent(task.description)}`)
+
+
+    }
 
     return (
         <div>
@@ -47,7 +61,7 @@ function Tasks (props) {
                             )} >
                                 {task.title}
                         </button>
-                        <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md">
+                        <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md" onClick={() => onSeeDetailsClick(task)} >
                             <ChevronRightIcon />
                         </button>
                         <button className="bg-[#B9B28A] text-[#504B38] p-2 rounded-md" onClick={() => deleteTaskClick(task.id)}>
